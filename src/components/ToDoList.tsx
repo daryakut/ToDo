@@ -1,6 +1,7 @@
 import React from "react";
 import { ITodo } from "../types/data";
 import ToDoItem from "./ToDoItem";
+import "../index.css"; 
 
 interface Props {
   items: ITodo[];
@@ -10,7 +11,7 @@ interface Props {
 
 const ToDoList: React.FC<Props> = ({ items, toggleToDo, deleteToDo }) => {
   return (
-    <>
+    <div className="todo-list">
       {items.map((todo) => (
         <ToDoItem
           key={todo.id}
@@ -19,7 +20,7 @@ const ToDoList: React.FC<Props> = ({ items, toggleToDo, deleteToDo }) => {
           deleteToDo={deleteToDo}
         />
       ))}
-    </>
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
 import { ITodo } from "../types/data";
+import "../index.css"; 
 
 interface ToDoItemProps {
   todo: ITodo;
@@ -12,27 +13,20 @@ const ToDoItem: React.FC<ToDoItemProps> = ({
   deleteToDo,
 }) => {
   return (
-    <div>
+    <div className={`todo-item ${todo.complete ? "completed" : ""}`}>
       <input
+        className="todo-checkbox"
         type="checkbox"
         checked={todo.complete}
         onChange={() => {
           toggleToDo(todo.id);
         }}
       />
-      <span style={{ display: "inline-block", margin: "0 10px" }}>
-        {todo.title}
-      </span>
+      <span className="todo-title">{todo.title}</span>
       <button
+        className="delete-button"
         onClick={() => {
           deleteToDo(todo.id);
-        }}
-        style={{
-          background: "transparent",
-          border: "none",
-          outline: "none",
-          color: "red",
-          cursor: "pointer",
         }}
       >
         {"❌"}
